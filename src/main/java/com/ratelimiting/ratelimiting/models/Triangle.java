@@ -1,6 +1,6 @@
 package com.ratelimiting.ratelimiting.models;
 
-public class TriangleDimensions {
+public class Triangle {
     private double base, height;
 
     public double getBase() {

@@ -1,10 +1,10 @@
 package com.ratelimiting.ratelimiting.models;
 
-public class AreaV1 {
+public class Area {
     private Double area;
     private String shape;
 
-    public AreaV1(String shape, Double area) {
+    public Area(String shape, Double area) {
         this.shape = shape;
         this.area = area;
     }

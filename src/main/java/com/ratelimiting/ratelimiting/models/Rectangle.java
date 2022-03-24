@@ -1,10 +1,10 @@
 package com.ratelimiting.ratelimiting.models;
 
-public class RectangleDimensionsV1 {
+public class Rectangle {
     private Double length;
     private Double width;
 
-//    public RectangleDimensionsV1(Integer length, Integer width) {
+//    public Rectangle(Integer length, Integer width) {
 //        this.length = length;
 //        this.width = width;
 //    }

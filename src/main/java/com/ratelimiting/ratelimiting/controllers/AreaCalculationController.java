@@ -1,8 +1,8 @@
 package com.ratelimiting.ratelimiting.controllers;
 
-import com.ratelimiting.ratelimiting.models.AreaV1;
-import com.ratelimiting.ratelimiting.models.RectangleDimensionsV1;
-import com.ratelimiting.ratelimiting.models.TriangleDimensions;
+import com.ratelimiting.ratelimiting.models.Area;
+import com.ratelimiting.ratelimiting.models.Rectangle;
+import com.ratelimiting.ratelimiting.models.Triangle;
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
 import io.github.bucket4j.Bucket4j;
@@ -32,17 +32,17 @@ class AreaCalculationController {
     }
 
     @PostMapping(value = "/rectangle")
-    public ResponseEntity<AreaV1> rectangle(@RequestBody RectangleDimensionsV1 dimensions) {
+    public ResponseEntity<Area> rectangle(@RequestBody Rectangle dimensions) {
         if (bucket.tryConsume(1)) {
-            return ResponseEntity.ok(new AreaV1("rectangle", dimensions.getLength() * dimensions.getWidth()));
+            return ResponseEntity.ok(new Area("rectangle", dimensions.getLength() * dimensions.getWidth()));
         }
         return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).build();
     }
 
     @PostMapping(value = "/triangle")
-    public ResponseEntity<AreaV1> triangle(@RequestBody TriangleDimensions dimensions) {
+    public ResponseEntity<Area> triangle(@RequestBody Triangle dimensions) {
         if (bucket.tryConsume(1)) {
-            return ResponseEntity.ok(new AreaV1("triangle", 0.5d * dimensions.getBase() * dimensions.getHeight()));
+            return ResponseEntity.ok(new Area("triangle", 0.5d * dimensions.getBase() * dimensions.getHeight()));
         }
         return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).build();
     }
