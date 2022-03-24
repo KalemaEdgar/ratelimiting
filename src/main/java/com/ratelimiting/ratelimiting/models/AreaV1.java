@@ -1,4 +1,4 @@
-package com.ratelimiting.ratelimiting;
+package com.ratelimiting.ratelimiting.models;
 
 public class AreaV1 {
     private Double area;
