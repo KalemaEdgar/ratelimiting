@@ -1,19 +1,19 @@
-package com.reatelimiting.ratelimiting;
+package com.ratelimiting.ratelimiting;
 
 public class RectangleDimensionsV1 {
-    private Integer length;
-    private Integer width;
+    private Double length;
+    private Double width;
 
 //    public RectangleDimensionsV1(Integer length, Integer width) {
 //        this.length = length;
 //        this.width = width;
 //    }
 
-    public Integer getLength() {
+    public Double getLength() {
         return length;
     }
 
-    public Integer getWidth() {
+    public Double getWidth() {
         return width;
     }
 }

@@ -1,19 +1,7 @@
-package com.reatelimiting.ratelimiting;
+package com.ratelimiting.ratelimiting;
 
-import io.github.bucket4j.Bandwidth;
-import io.github.bucket4j.Bucket;
-import io.github.bucket4j.Bucket4j;
-import io.github.bucket4j.Refill;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.time.Duration;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 public class RatelimitingApplication {
@@ -21,6 +9,7 @@ public class RatelimitingApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RatelimitingApplication.class, args);
 
+//		Implement Rate Limiting
 //		Refill refill = Refill.intervally(10, Duration.ofMinutes(1));
 //		Bandwidth limit = Bandwidth.classic(10, refill);
 //		Bucket bucket = Bucket4j.builder()

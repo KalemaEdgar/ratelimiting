@@ -1,15 +1,15 @@
-package com.reatelimiting.ratelimiting;
+package com.ratelimiting.ratelimiting;
 
-class AreaV1 {
-    private Integer area;
+public class AreaV1 {
+    private Double area;
     private String shape;
 
-    public AreaV1(String shape, Integer area) {
+    public AreaV1(String shape, Double area) {
         this.shape = shape;
         this.area = area;
     }
 
-    public Integer getArea() {
+    public Double getArea() {
         return area;
     }
 
