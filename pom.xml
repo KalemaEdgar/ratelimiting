@@ -33,10 +33,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.github.vladimir-bukhtoyarov/bucket4j-core
+			supports in-memory or distributed cache using JCache
+		-->
 		<dependency>
 			<groupId>com.github.vladimir-bukhtoyarov</groupId>
 			<artifactId>bucket4j-core</artifactId>
-			<version>4.10.0</version>
+			<version>7.3.0</version>
 		</dependency>
 	</dependencies>
 
