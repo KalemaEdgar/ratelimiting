@@ -10,7 +10,7 @@ import java.time.Duration;
 
 /**
  * This class returns the bandwidth and the bucket per client
- * to the RateLimit API functionality
+ * to the RateLimit API Controller
  * So we need to AutoWire this Service into the RateLimitController class
  */
 
@@ -23,6 +23,12 @@ public class PricingPlanService {
 
     @Value("${rate.limit.client.free}")
     private String free;
+
+    @Value("${rate.limit.client.basic.numberOfRequests}")
+    private Integer basicPlanNumberOfRequests;
+
+    @Value("${rate.limit.client.free.numberOfRequests}")
+    private Integer freePlanNumberOfRequests;
 
     public Bucket getPlanServiceBucket(String clientToken)
     {
@@ -39,13 +45,24 @@ public class PricingPlanService {
     private Bandwidth getClientBandWidth(String clientToken)
     {
         if (clientToken.equals(free))
-            return Bandwidth.classic(5, Refill.greedy(5, Duration.ofMinutes(1)))
+            return Bandwidth.classic(freePlanNumberOfRequests, Refill.greedy(freePlanNumberOfRequests, Duration.ofMinutes(1)))
                     .withInitialTokens(5);
+
         else if (clientToken.equals(basic))
-            return Bandwidth.classic(10, Refill.greedy(10, Duration.ofMinutes(1)))
+            return Bandwidth.classic(basicPlanNumberOfRequests, Refill.greedy(basicPlanNumberOfRequests, Duration.ofMinutes(1)))
                     .withInitialTokens(10);
 
         // In case the client doesn't have a plan
         return Bandwidth.classic(2, Refill.greedy(2, Duration.ofMinutes(1)));
+    }
+
+    public boolean isTokenValid(String clientToken)
+    {
+        if (clientToken.equals(free) || clientToken.equals(basic))
+            return true;
+
+        // Edgar!!!, In case the client doesn't have a plan
+        // At this point choose if you let them have the 2 requests or not
+        return false;
     }
 }
